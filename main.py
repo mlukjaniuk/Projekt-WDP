@@ -1,8 +1,10 @@
-import sys, time
+import sys, time, climage
 from funkcje import *
 
 
 while True:
+    img1 = climage.convert('start.png', is_unicode=True, width=60)
+    img4 = climage.convert('end.jpg', is_unicode=True, width=40)
     liczba_graczy = int(input('Wpisz ilość graczy lub \'0\' aby zakończyć grę: '))
     gracze = []
     l_graczy(liczba_graczy, gracze)
@@ -14,6 +16,7 @@ while True:
     elif liczba_graczy>4:
         print('Liczba graczy jest zbyt duża, spróbuj jeszcze raz.')
     else:
+        print(img1)
         print('Witajcie w grze Eksplodujące Kotki!\nLiczba graczy to:',
               liczba_graczy,'\nKażdy z Was otrzymuje numer od 1 do',liczba_graczy)
         il_ek = liczba_graczy-1
@@ -55,7 +58,7 @@ while True:
             rece.pop(nr_odp_gracza)
             gracze.pop(nr_odp_gracza)
             liczba_graczy-=1
-
+        print(img4)
         print('Wygrywa gracz nr', gracze[0], '!!!')
 
         print('\n\nTo już koniec gry, możesz teraz wyjść lub zagrać jeszcze raz :)\n')

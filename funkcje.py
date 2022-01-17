@@ -1,4 +1,4 @@
-import random, sys, time
+import random, sys, time, climage
 
 def tlumacz_karty():
     while True:
@@ -203,6 +203,8 @@ def cokryjeprzyszlosc(taliakart):
 
 def eksplodujacykotek(nr_talii,rece,taliakart):
     if 'roz' in rece[nr_talii]:
+        img2 = climage.convert('playing-kitten.png', is_unicode=True, width=40)
+        print(img2)
         print("Udało Ci się rozbroić Eksplodującego Kotka! Pozostajesz w grze, a karta wraca do talii.")
         random.shuffle(taliakart)
         str = '...\n...\n...\n'
@@ -213,6 +215,8 @@ def eksplodujacykotek(nr_talii,rece,taliakart):
         rece[nr_talii].remove('roz')
         return False
     else:
+        img3 = climage.convert('exploding-kitten.png', is_unicode=True, width=40)
+        print(img3)
         print("Niestety Kotek eksplodował, więc odpadasz z gry.")
         taliakart.remove('ek')
         return True
