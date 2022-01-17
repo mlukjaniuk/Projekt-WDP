@@ -1,4 +1,3 @@
-import sys, time, climage
 from funkcje import *
 
 
@@ -11,23 +10,23 @@ while True:
     if liczba_graczy == 0:
         print('Wyszedłeś z gry.')
         break
-    if liczba_graczy<2:
+    if liczba_graczy < 2:
         print('Liczba graczy jest za mała, spróbuj jeszcze raz.')
-    elif liczba_graczy>4:
+    elif liczba_graczy > 4:
         print('Liczba graczy jest zbyt duża, spróbuj jeszcze raz.')
     else:
         print(img1)
         print('Witajcie w grze Eksplodujące Kotki!\nLiczba graczy to:',
-              liczba_graczy,'\nKażdy z Was otrzymuje numer od 1 do',liczba_graczy)
+              liczba_graczy, '\nKażdy z Was otrzymuje numer od 1 do', liczba_graczy)
         il_ek = liczba_graczy-1
         il_roz = 6-liczba_graczy
         taliakart = ['nnn', 'nnn', 'nnn', 'atak', 'atak', 'atak', 'atak', 'pom', 'pom', 'pom', 'pom', 'przys',
                      'przys', 'przys', 'przys', 'pot', 'pot', 'pot', 'pot', 'ckp', 'ckp', 'ckp', 'ckp', 'ckp',
                      'pom', 'pom', 'pom', 'pom']
 
-        while il_roz>0:
+        while il_roz > 0:
             taliakart.append('roz')
-            il_roz=il_roz-1
+            il_roz = il_roz-1
 
         #spiskart = ['Eksplodujący Kotek', 'Rozbrój', 'Nie, Nie, Nie', 'Pomiń', 'Przysługa', 'Potasuj',
                #     'Co Kryje Przyszłość', 'Atakuj']
@@ -41,12 +40,12 @@ while True:
             rozdaj_karty_3(taliakart, rece)
         elif liczba_graczy == 4:
             rozdaj_karty_4(taliakart, rece)
-        for i in range (0, il_ek):
+        for i in range(0, il_ek):
             taliakart.append('ek')
         random.shuffle(taliakart)
 
         print('\n\nKażdy z Was otrzyma kartę Rozbrój oraz 4 losowe z talii.')
-        str='...\n...\n..'
+        str = '...\n...\n..'
         for litera in str:
             sys.stdout.write(litera)
             time.sleep(.3)
@@ -57,7 +56,7 @@ while True:
             nr_odp_gracza = gra(rece, gracze, liczba_graczy, taliakart, nr_odp_gracza)
             rece.pop(nr_odp_gracza)
             gracze.pop(nr_odp_gracza)
-            liczba_graczy-=1
+            liczba_graczy -= 1
         print(img4)
         print('Wygrywa gracz nr', gracze[0], '!!!')
 

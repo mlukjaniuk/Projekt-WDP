@@ -1,5 +1,6 @@
 import random, sys, time, climage
 
+
 def tlumacz_karty():
     while True:
         print('\nW talii znajdują się następujące karty: \'Eksplodujący Kotek\', \'Rozbrój\', \'Atakuj\', '
@@ -39,7 +40,8 @@ def tlumacz_karty():
         else:
             print('\n\t\tPodałeś błędną nazwę, spróbuj jeszcze raz.')
 
-def rozdaj_karty_2(taliakart,rece):
+
+def rozdaj_karty_2(taliakart, rece):
         reka1 = ['roz']
         x1 = 4
         while x1 > 0:
@@ -54,7 +56,7 @@ def rozdaj_karty_2(taliakart,rece):
         rece.append(reka2)
 
 
-def rozdaj_karty_3(taliakart,rece):
+def rozdaj_karty_3(taliakart, rece):
     reka1 = ['roz']
     x1 = 4
     while x1 > 0:
@@ -74,7 +76,8 @@ def rozdaj_karty_3(taliakart,rece):
         x3 = x3 - 1
     rece.append(reka3)
 
-def rozdaj_karty_4(taliakart,rece):
+
+def rozdaj_karty_4(taliakart, rece):
     reka1 = ['roz']
     x1 = 4
     while x1 > 0:
@@ -100,6 +103,7 @@ def rozdaj_karty_4(taliakart,rece):
         x4 = x4 - 1
     rece.append(reka4)
 
+
 def l_graczy(liczba_graczy, gracze):
     if liczba_graczy == 2:
         gracze.append(1)
@@ -114,8 +118,9 @@ def l_graczy(liczba_graczy, gracze):
         gracze.append(3)
         gracze.append(4)
 
-def dobierzkarte(taliakart,rece,nr_talii):
-    dobranakarta=taliakart[0]
+
+def dobierzkarte(taliakart, rece, nr_talii):
+    dobranakarta = taliakart[0]
     if dobranakarta == 'ek':
         print('Dobrana karta to Eksplodujący Kotek')
         kotek_eksplodowal = eksplodujacykotek(nr_talii, rece, taliakart)
@@ -181,6 +186,7 @@ def pelna_nazwa(skrot):
     else:
         print('Atakuj')
 
+
 def cokryjeprzyszlosc(taliakart):
     print('3 wierzchnie karty to: ')
     for i in range(0, 3):
@@ -201,7 +207,8 @@ def cokryjeprzyszlosc(taliakart):
         else:
             print('Atakuj')
 
-def eksplodujacykotek(nr_talii,rece,taliakart):
+
+def eksplodujacykotek(nr_talii, rece, taliakart):
     if 'roz' in rece[nr_talii]:
         img2 = climage.convert('playing-kitten.png', is_unicode=True, width=40)
         print(img2)
@@ -220,7 +227,6 @@ def eksplodujacykotek(nr_talii,rece,taliakart):
         print("Niestety Kotek eksplodował, więc odpadasz z gry.")
         taliakart.remove('ek')
         return True
-
 
 
 def gra(rece, gracze, liczba_graczy, taliakart, rozpoczynajacy_gracz):
