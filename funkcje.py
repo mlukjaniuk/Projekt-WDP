@@ -224,7 +224,7 @@ def eksplodujacykotek(nr_talii, rece, taliakart):
     else:
         img3 = climage.convert('exploding-kitten.png', is_unicode=True, width=40)
         print(img3)
-        print(colored("Niestety Kotek eksplodował, więc odpadasz z gry.", 'red'))
+        print(colored("Niestety Kotek eksplodował, więc odpadasz z gry.\n\n\n", 'red'))
         taliakart.remove('ek')
         return True
 
@@ -232,7 +232,7 @@ def eksplodujacykotek(nr_talii, rece, taliakart):
 def gra(rece, gracze, liczba_graczy, taliakart, rozpoczynajacy_gracz):
     tura = rozpoczynajacy_gracz
     while True:
-        print(colored('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTura gracza nr ', 'yellow'),
+        print(colored('\n\n\n\n\n\n\n\n\n\nTura gracza nr ', 'yellow'),
               colored(gracze[tura % liczba_graczy], 'yellow'))
         while True:
             print(colored('Twoje karty to:', 'yellow'))

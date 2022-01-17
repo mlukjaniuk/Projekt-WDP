@@ -58,6 +58,6 @@ while True:
             gracze.pop(nr_odp_gracza)
             liczba_graczy -= 1
         print(img4)
-        print(colored('Wygrywa gracz nr', gracze[0], '!!!', 'red'))
+        print(colored('\nWygrywa gracz nr', 'red'), colored(gracze[0], 'red'), colored('!!!', 'red'))
 
         print(colored('\n\nTo już koniec gry, możesz teraz wyjść lub zagrać jeszcze raz :)\n', 'red'))
