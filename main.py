@@ -1,5 +1,5 @@
 from funkcje import *
-
+from termcolor import colored
 
 while True:
     img1 = climage.convert('start.png', is_unicode=True, width=60)
@@ -16,8 +16,8 @@ while True:
         print('Liczba graczy jest zbyt duża, spróbuj jeszcze raz.')
     else:
         print(img1)
-        print('Witajcie w grze Eksplodujące Kotki!\nLiczba graczy to:',
-              liczba_graczy, '\nKażdy z Was otrzymuje numer od 1 do', liczba_graczy)
+        print(colored('Witajcie w grze Eksplodujące Kotki!\nLiczba graczy to:', 'red'),
+              liczba_graczy, colored('\nKażdy z Was otrzymuje numer od 1 do', 'red'), colored(liczba_graczy, 'red'))
         il_ek = liczba_graczy-1
         il_roz = 6-liczba_graczy
         taliakart = ['nnn', 'nnn', 'nnn', 'atak', 'atak', 'atak', 'atak', 'pom', 'pom', 'pom', 'pom', 'przys',
@@ -44,13 +44,13 @@ while True:
             taliakart.append('ek')
         random.shuffle(taliakart)
 
-        print('\n\nKażdy z Was otrzyma kartę Rozbrój oraz 4 losowe z talii.')
+        print(colored('\n\nKażdy z Was otrzyma kartę Rozbrój oraz 4 losowe z talii.', 'red'))
         str = '...\n...\n..'
         for litera in str:
             sys.stdout.write(litera)
             time.sleep(.3)
-        print(litera)
-        print('Karty zostały rozdane, zacznijmy grę!')
+        print(colored(litera))
+        print(colored('Karty zostały rozdane, zacznijmy grę!', 'red'))
         nr_odp_gracza = 0
         for nr_gry in range(liczba_graczy-1):
             nr_odp_gracza = gra(rece, gracze, liczba_graczy, taliakart, nr_odp_gracza)
@@ -58,6 +58,6 @@ while True:
             gracze.pop(nr_odp_gracza)
             liczba_graczy -= 1
         print(img4)
-        print('Wygrywa gracz nr', gracze[0], '!!!')
+        print(colored('Wygrywa gracz nr', gracze[0], '!!!', 'red'))
 
-        print('\n\nTo już koniec gry, możesz teraz wyjść lub zagrać jeszcze raz :)\n')
+        print(colored('\n\nTo już koniec gry, możesz teraz wyjść lub zagrać jeszcze raz :)\n', 'red'))
