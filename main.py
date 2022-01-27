@@ -1,5 +1,5 @@
 from funkcje import *
-from termcolor import colored
+
 
 while True:
     img1 = climage.convert('start.png', is_unicode=True, width=60)
@@ -16,6 +16,7 @@ while True:
         print('Liczba graczy jest zbyt duża, spróbuj jeszcze raz.')
     else:
         print(img1)
+        playsound('dzwieki/start.mp3')
         print(colored('Witajcie w grze Eksplodujące Kotki!\nLiczba graczy to:', 'red'),
               liczba_graczy, colored('\nKażdy z Was otrzymuje numer od 1 do', 'red'), colored(liczba_graczy, 'red'))
         il_ek = liczba_graczy-1
@@ -47,8 +48,9 @@ while True:
         print(colored('\n\nKażdy z Was otrzyma kartę Rozbrój oraz 4 losowe z talii.', 'red'))
         str = '...\n...\n..'
         for litera in str:
+            playsound('dzwieki/tasowanie.mp3')
             sys.stdout.write(litera)
-            time.sleep(.3)
+            time.sleep(.1)
         print(colored(litera))
         print(colored('Karty zostały rozdane, zacznijmy grę!', 'red'))
         nr_odp_gracza = 0
@@ -58,6 +60,7 @@ while True:
             gracze.pop(nr_odp_gracza)
             liczba_graczy -= 1
         print(img4)
+        playsound('dzwieki/wygrana.mp3')
         print(colored('\nWygrywa gracz nr', 'red'), colored(gracze[0], 'red'), colored('!!!', 'red'))
 
         print(colored('\n\nTo już koniec gry, możesz teraz wyjść lub zagrać jeszcze raz :)\n', 'red'))

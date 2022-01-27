@@ -2,7 +2,6 @@ Uproszczona gra Eksplodujące Kotki inspirowana karcianką wydawnictwa Rebel o t
 Link do instrukcji oryginału:
 https://www.wydawnictworebel.pl/repository/files/instrukcje/Eksplodujace_kotki_instrukcja_PL.pdf
 
-
-
+Potrzebne biblioteki: termcolor, playsound (wersja 1.2.2), climage, sys, time
 
 Marcelina Łukjaniuk

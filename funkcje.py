@@ -1,5 +1,6 @@
 import random, sys, time, climage
 from termcolor import colored
+from playsound import playsound
 
 def tlumacz_karty():
     while True:
@@ -16,17 +17,20 @@ def tlumacz_karty():
 
         elif name == 'Rozbrój':
             print(colored('\n\t\tPo wylosowaniu Eksplodującego Kotka zagraj tę kartę, aby nie umrzeć.'
-                  ' Zostanie ona wtedy odrzucona, a Twoja tura zakończona.', 'cyan'))
+                  ' Zostanie ona wtedy odrzucona, a Twoja tura zakończona (niemożliwa do zagrania w '
+                          'innym momencie).', 'cyan'))
 
         elif name == 'Nie, Nie, Nie':
-            print(colored('\n\t\tAnuluj działanie karty Przysługi lub Ataku.', 'cyan'))
+            print(colored('\n\t\tAnuluj działanie karty Przysługi lub Ataku (niemożliwa do zagrania w '
+                          'innym momencie).', 'cyan'))
 
         elif name == 'Pomiń':
             print(colored('\n\t\tNatychmiast zakończ swoją turę bez dobierania karty (zagrana w odpowiedzi na kartę'
                   ' Ataku kończy tylko 1 z 2 tur).', 'cyan'))
 
         elif name == 'Przysługa':
-            print(colored('\n\t\tZmuś następnego gracza do oddania Ci ostatniej dobranej przez siebie karty z ręki.', 'cyan'))
+            print(colored('\n\t\tZmuś następnego gracza do oddania Ci ostatniej dobranej przez siebie karty'
+                          ' z ręki.', 'cyan'))
 
         elif name == 'Potasuj':
             print(colored('\n\t\tPotasuj talię pozostałych kart.', 'cyan'))
@@ -121,6 +125,7 @@ def l_graczy(liczba_graczy, gracze):
 
 def dobierzkarte(taliakart, rece, nr_talii):
     dobranakarta = taliakart[0]
+    playsound('dzwieki/dobranie.mp3')
     if dobranakarta == 'ek':
         print(colored('Dobrana karta to Eksplodujący Kotek', 'magenta'))
         kotek_eksplodowal = eksplodujacykotek(nr_talii, rece, taliakart)
@@ -212,20 +217,22 @@ def eksplodujacykotek(nr_talii, rece, taliakart):
     if 'roz' in rece[nr_talii]:
         img2 = climage.convert('playing-kitten.png', is_unicode=True, width=40)
         print(img2)
+        playsound('dzwieki/rozbrojenie.mp3')
         print(colored("Udało Ci się rozbroić Eksplodującego Kotka! Pozostajesz w grze, a karta wraca do talii.", 'red'))
         random.shuffle(taliakart)
         str = '...\n...\n...\n'
         for litera in str:
+            playsound('dzwieki/tasowanie.mp3')
             sys.stdout.write(litera)
-            time.sleep(.3)
+            time.sleep(.1)
         print("Talia została potasowana.")
         rece[nr_talii].remove('roz')
         return False
     else:
         img3 = climage.convert('exploding-kitten.png', is_unicode=True, width=40)
         print(img3)
+        playsound('dzwieki/wybuch.mp3')
         print(colored("Niestety Kotek eksplodował, więc odpadasz z gry.\n\n\n", 'red'))
-        taliakart.remove('ek')
         return True
 
 
@@ -234,6 +241,7 @@ def gra(rece, gracze, liczba_graczy, taliakart, rozpoczynajacy_gracz):
     while True:
         print(colored('\n\n\n\n\n\n\n\n\n\nTura gracza nr ', 'yellow'),
               colored(gracze[tura % liczba_graczy], 'yellow'))
+        print('Pozostałych kart w talii jest:', len(taliakart), '\n')
         while True:
             print(colored('Twoje karty to:', 'yellow'))
             reka_karty(tura, liczba_graczy, rece)
@@ -249,8 +257,9 @@ def gra(rece, gracze, liczba_graczy, taliakart, rozpoczynajacy_gracz):
                 random.shuffle(taliakart)
                 str = '...\n...\n...\n'
                 for litera in str:
+                    playsound('dzwieki/tasowanie.mp3')
                     sys.stdout.write(litera)
-                    time.sleep(.3)
+                    time.sleep(.1)
                 print('Talia została potasowana.')
                 rece[tura % liczba_graczy].remove('pot')
             elif zagrana_karta == 'Co Kryje Przyszłość' and 'ckp' in rece[tura % liczba_graczy]:
@@ -266,6 +275,7 @@ def gra(rece, gracze, liczba_graczy, taliakart, rozpoczynajacy_gracz):
                     else:
                         rece[tura % liczba_graczy].append(rece[(tura + 1) % liczba_graczy].pop())
                         rece[tura % liczba_graczy].remove('przys')
+                        playsound('dzwieki/dobranie.mp3')
                         print('Dobrana karta to: ')
                         pelna_nazwa(rece[tura % liczba_graczy][-1])
             elif zagrana_karta == 'Atakuj' and 'atak' in rece[tura % liczba_graczy]:
