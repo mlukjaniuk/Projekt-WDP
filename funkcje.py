@@ -25,8 +25,7 @@ def tlumacz_karty():
                           'innym momencie).', 'cyan'))
 
         elif name == 'Pomiń':
-            print(colored('\n\t\tNatychmiast zakończ swoją turę bez dobierania karty (zagrana w odpowiedzi na kartę'
-                  ' Ataku kończy tylko 1 z 2 tur).', 'cyan'))
+            print(colored('\n\t\tNatychmiast zakończ swoją turę bez dobierania karty.', 'cyan'))
 
         elif name == 'Przysługa':
             print(colored('\n\t\tZmuś następnego gracza do oddania Ci ostatniej dobranej przez siebie karty'
